@@ -18,3 +18,4 @@ curl -H "Content-Type: application/json" -XPOST http://localhost:9200/_bulk --da
 - Mettre en place un système de pagination
 - Ajouter Leaflet
 - Ajouter un système CRUD
+- Ajouter Kibana
