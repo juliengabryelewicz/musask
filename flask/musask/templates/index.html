@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Rechercher un musée</h1>
+<section class="section">
+    <form>
+        {{ form.search.label(class_="form-label") }}
+        {{ form.search(size=32, class_="form-control") }}
+        {{ form.submit(class_="btn btn-primary") }}
+    </form>
+</section>
+
+<section class="section">
+    <div class="container">
+        <hr>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Adresse</th>
+                <th>Téléphone</th>
+                <th>Site internet</th>
+            </tr>
+            </thead>
+            <tbody id="results">
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<script type="text/javascript">
+
+document.getElementById("submit").addEventListener("click", searchMuseum, false);
+
+function searchMuseum(event) {
+    let searchValue = document.getElementById("search").value;
+    event.preventDefault();
+
+    fetch('http://localhost:8000/musee/search', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({"search": searchValue}),
+    })
+    .then((response) => response.json())
+    .then((data) => {
+        document.getElementById("results").innerHTML = "";
+        console.log('Success:', data);
+        data.hits.map(musee => document.getElementById("results").innerHTML += "<tr>" + 
+            "<td>" + musee._source.nom_officiel_du_musee + "</td>" +
+            "<td>" + musee._source.adresse + " " + musee._source.code_postal + " " + musee._source.commune + "</td>" +
+            "<td>" + musee._source.telephone + "</td>" +
+            "<td>" + musee._source.url + "</td>" +
+            "</tr>")
+    })
+
+}
+
+</script>
+
+{% endblock %}

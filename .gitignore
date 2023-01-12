@@ -1,0 +1,4 @@
+flask/__pycache
+flask/musask/__pycache
+elasticsearch/data
+elasticsearch/logs

@@ -1,0 +1,58 @@
+{
+    "settings": {
+        "number_of_shards": 1,
+        "number_of_replicas": 0
+    },
+    "mappings": {
+        "properties": {
+            "region_administrative": {
+                "type": "text"
+            },
+            "departement": {
+                "type": "text"
+            },
+            "identifiant_museofile" : {
+                "type": "keyword"                
+            },
+            "commune": {
+                "type": "text"
+            },
+            "code_postal": {
+                "type": "keyword"
+            },
+            "telephone": {
+                "type": "keyword"
+            },
+            "url": {
+                "type": "keyword"
+            },
+            "nom_officiel_du_musee": {
+                "type": "text"
+            },
+            "adresse": {
+                "type": "text"
+            },
+            "lieu": {
+                "type": "text"
+            },
+            "ref_deps": {
+                "type": "keyword"
+            },
+            "date_arrete_attribution_appellation": {
+                "type": "keyword"
+            },
+            "latitude": {
+                "type": "float"
+            },
+            "longitude": {
+                "type": "float"
+            },
+            "geolocalisation": { 
+                "properties": {
+                  "lon": { "type": "float" },
+                  "lat": { "type": "float" }
+                }
+            }
+        }
+    }
+}
