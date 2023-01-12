@@ -1,10 +1,8 @@
 from flask import (
-    Blueprint, flash, g, jsonify, redirect, render_template, request, url_for
+    Blueprint, jsonify, render_template, request
 )
 from werkzeug.exceptions import abort
-
 from elasticsearch import Elasticsearch
-from datetime import datetime
 from musask.forms import SearchForm
 
 bp = Blueprint('musee', __name__)
